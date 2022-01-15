@@ -1,6 +1,6 @@
 import { Controller, Get, Put, Param, Delete } from '@nestjs/common';
 import { CacheService } from './cache.service';
-@Controller()
+@Controller('')
 export class CacheController {
   constructor(private readonly cacheService: CacheService) {}
 
@@ -19,13 +19,13 @@ export class CacheController {
     return this.cacheService.remove(id);
   }
 
-  @Put(':id')
+  @Put('ttl/:id')
   setTTL(@Param('id') id: string) {
     this.cacheService.setTTL(id);
   }
 
-  @Delete(':id')
+  @Delete('ttl/:id')
   removeTTL(@Param('id') id: string) {
-    return this.cacheService.removeTTL(id);
+    this.cacheService.removeTTL(id);
   }
 }

@@ -1,8 +1,6 @@
 import { CACHE_MANAGER, Inject, Injectable } from '@nestjs/common';
 import { Store, Cache } from 'cache-manager';
 import { createClient } from 'redis';
-// 86400 equals to one day
-const TTL_SECONDS = parseInt(process.env.TTL_SECONDS || '86400');
 interface RedisCache extends Cache {
   store: RedisStore;
 }
@@ -38,7 +36,8 @@ export class CacheService {
   }
 
   setTTL(id: string) {
-    return this.client.expireAt(id, TTL_SECONDS);
+    const ttl = parseInt(process.env.TTL_SECONDS);
+    return this.client.expire(id, ttl);
   }
 
   removeTTL(id: string) {

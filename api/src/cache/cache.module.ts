@@ -7,8 +7,8 @@ import { CacheController } from './cache.controller';
   imports: [
     CModule.register({
       store: redisStore,
-      host: 'localhost',
-      port: 6379,
+      host: process.env.HOST,
+      port: process.env.PORT,
     }),
   ],
   controllers: [CacheController],

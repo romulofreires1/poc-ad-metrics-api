@@ -21,7 +21,7 @@ export class CacheController {
 
   @Put(':id')
   setTTL(@Param('id') id: string) {
-    this.cacheService.setTTL(id, 1000);
+    this.cacheService.setTTL(id);
   }
 
   @Delete(':id')

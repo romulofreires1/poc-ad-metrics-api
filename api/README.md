@@ -1,6 +1,6 @@
 ## UI
 
-{host}/swagger
+{host}:3000/swagger
 
 ## Installation
 

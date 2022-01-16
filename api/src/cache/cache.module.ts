@@ -3,6 +3,8 @@ import { Module, CacheModule as CModule } from '@nestjs/common';
 import { CacheService } from './cache.service';
 import { CacheController } from './cache.controller';
 
+console.log(process.env.HOST);
+
 @Module({
   imports: [
     CModule.register({

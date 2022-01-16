@@ -5,3 +5,19 @@ services:
     container_name: redis
     ports:
       - 6379:6379
+    networks:
+      - backend
+  api:
+    container_name: api
+    build:
+      context: ./api
+    ports:
+      - 3000:3000
+    command: yarn start:dev
+    networks:
+      - backend
+    depends_on:
+      - redis
+    env_file: ./api/.env
+networks:
+  backend:

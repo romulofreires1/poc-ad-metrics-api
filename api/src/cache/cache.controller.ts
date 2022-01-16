@@ -4,7 +4,7 @@ import { CacheService } from './cache.service';
 export class CacheController {
   constructor(private readonly cacheService: CacheService) {}
 
-  @Put(':id')
+  @Put('increment/:id')
   incr(@Param('id') id: string) {
     this.cacheService.incr(id);
   }
